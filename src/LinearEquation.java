@@ -26,7 +26,7 @@ public class LinearEquation {
     }
 
     //string fraction slope
-    public String slope(){
+    public String calcSlope(){
         String slope = (y2-y1) + "/" + (x2-x1);
         //check double negative
         if (((y2-y1) < 0) && ((x2-x1) < 0)){
@@ -38,13 +38,13 @@ public class LinearEquation {
     }
 
     //number slope
-    public double calcSlope(){
+    public double slope(){
         return round(((double)y2-y1)/((double)x2-x1));
     }
 
     //y int
     public double yIntercept(){
-        return round(y1 - calcSlope()*x1);
+        return round(y1 - slope()*x1);
     }
 
     //slope intercept form
@@ -53,20 +53,20 @@ public class LinearEquation {
         String equation = "y = ";
         /*slope part*/
         //check slope = 0
-        if (calcSlope() == 0) {
+        if (slope() == 0) {
             equation += "";
         } else {
             //check x = 1 or -1
-            if (calcSlope() != 1 && calcSlope() != -1) {
+            if (slope() != 1 && slope() != -1) {
                 //check whole number
-                if (calcSlope() % 1 == 0) {
-                    equation += (int) calcSlope();
+                if (slope() % 1 == 0) {
+                    equation += (int) slope();
                 } else {
-                    equation += slope();
+                    equation += calcSlope();
                 }
             } else {
                 // add the negative sign for x = -1
-                if (calcSlope() < 0){
+                if (slope() < 0){
                     equation += "-";
                 } else {
                     equation += "";
@@ -78,7 +78,7 @@ public class LinearEquation {
         /*y int part*/
         //check negative y int
         if (yIntercept() < 0){
-            if (calcSlope() == 0){
+            if (slope() == 0){
                 equation += (int)yIntercept();
             } else {
                 equation += "- " + Math.abs(yIntercept());
@@ -86,7 +86,7 @@ public class LinearEquation {
         } else if (yIntercept() == 0) { //check y int = 0
             equation += "";
         } else {
-            if (calcSlope() == 0){
+            if (slope() == 0){
                 equation += (int)yIntercept();
             } else {
                 equation += "+ " + yIntercept();
@@ -97,7 +97,7 @@ public class LinearEquation {
 
     //calculate using x value
     public String solve(double x){
-        double y = calcSlope()*x + yIntercept();
+        double y = slope()*x + yIntercept();
         return "(" + x + ", " + y + ")";
     }
 
@@ -105,7 +105,7 @@ public class LinearEquation {
     public String lineInfo(){
         return "\nThe two points are: " + "(" + x1 + ", " + y1 + ")" + " and " + "(" + x2 + ", " + y2 + ")" + "\n" +
                 "The equation of the line between these points is: " + equation() + "\n" +
-                "The slope of this line is: " + calcSlope() + "\n" +
+                "The slope of this line is: " + slope() + "\n" +
                 "The y-intercept of this line is: " + yIntercept() + "\n" +
                 "The distance between the two points is: " + distance() + "\n";
     }
