@@ -14,14 +14,14 @@ public class LinearEquation {
         this.y2 = y2;
     }
 
-    //round to nearest 100th
-    public double round(double num){
+    //roundedToHundredth to nearest 100th
+    public double roundedToHundredth(double num){
         return (Math.round(num*100))/100.0;
     }
 
     //distance between
     public double distance(){
-        return round(Math.sqrt(Math.pow(x2-x1 , 2) + Math.pow(y2-y1 , 2)));
+        return roundedToHundredth(Math.sqrt(Math.pow(x2-x1 , 2) + Math.pow(y2-y1 , 2)));
 
     }
 
@@ -39,19 +39,23 @@ public class LinearEquation {
 
     //number slope
     public double slope(){
-        return round(((double)y2-y1)/((double)x2-x1));
+        return roundedToHundredth(((double)y2-y1)/((double)x2-x1));
     }
 
     //y int
     public double yIntercept(){
-        return round(y1 - slope()*x1);
+        return roundedToHundredth(y1 - slope()*x1);
     }
 
     //slope intercept form
     public String equation(){
+
         /*y = part*/
+
         String equation = "y = ";
+
         /*slope part*/
+
         //check slope = 0
         if (slope() == 0) {
             equation += "";
@@ -72,10 +76,14 @@ public class LinearEquation {
                     equation += "";
                 }
             }
+
             /*x part*/
+
             equation += "x ";
         }
+
         /*y int part*/
+
         //check negative y int
         if (yIntercept() < 0){
             if (slope() == 0){
@@ -96,9 +104,9 @@ public class LinearEquation {
     }
 
     //calculate using x value
-    public String solve(double x){
+    public String coordinateForX(double x){
         double y = slope()*x + yIntercept();
-        return "(" + x + ", " + y + ")";
+        return "(" + roundedToHundredth(x) + ", " + roundedToHundredth(y) + ")";
     }
 
     //info

@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class LinearEquationRunner {
     public static void main(String[] args) {
+        //start
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome!");
         System.out.print("Enter coordinate 1: ");
@@ -34,11 +35,11 @@ public class LinearEquationRunner {
 
         //check vertical line
         if (x1 != x2){
-            LinearEquation equation = new LinearEquation(x1,y1,x2,y2);
-            System.out.println(equation.lineInfo());
+            LinearEquation obj = new LinearEquation(x1,y1,x2,y2);
+            System.out.println(obj.lineInfo());
             System.out.print("Enter a value for x: ");
             double x = scan.nextDouble();
-            System.out.println("The point on the line is: " + equation.solve(x));
+            System.out.println("The point on the line is: " + obj.coordinateForX(x));
         } else {
             System.out.println("These points are on a vertical line: x = " + x1);
         }
